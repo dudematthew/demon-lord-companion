@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { Inter as FontSans } from "next/font/google"
+import { ThemeProvider } from "~/components/theme-provider"
 
 import Provider from "./_trpc/Provider";
 
@@ -28,9 +29,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl" suppressHydrationWarning>
-      <Provider>
-        <body className={fontSans.className}>{children}</body>
-      </Provider>
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+        <Provider>
+          <body className={fontSans.className}>{children}</body>
+        </Provider>
+      </ThemeProvider>
     </html>
   );
 }
