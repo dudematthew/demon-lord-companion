@@ -1,6 +1,8 @@
 import ClientComponent from "~/components/ClientComponent";
 import ServerComponent from "~/components/ServerComponent";
-import { ModeToggle } from "~/components/mode-toggle";
+import { ModeToggle } from "~/components/ui/mode-toggle";
+import { SessionProvider } from "next-auth/react";
+import { Button } from "~/components/ui/button";
 
 export default function Home() {
   return (
