@@ -8,8 +8,15 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/t
 export default async function Navbar () {
     return (
         <>
-            <div className="flex flex-col gap-2 h-full p-2 justify-between">
-                <div></div>
+            <div className="flex flex-col gap-2 h-full p-3 justify-between text-sm">
+                <div className="flex flex-col gap-1">
+                    <div className="flex gap-2 w-full items-center my-1">
+                        <img src="/logoBlack.png" alt="Logo" className="h-12 w-auto block dark:hidden" />
+                        <img src="/logoWhite.png" alt="Logo" className="h-12 w-auto hidden dark:block" />
+                        <span className="font-semibold text-ellipsis">Demon Lord Companion</span>
+                    </div>
+                    <Separator></Separator>
+                </div>
                 <div className="flex flex-col gap-3">
                     <div className="flex gap-3 w-full">
                         <TooltipProvider>
