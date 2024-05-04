@@ -2,10 +2,11 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { Inter as FontSans } from "next/font/google";
-import { ThemeProvider } from "~/components/theme-provider";
+import { ThemeProvider } from "~/app/_shadcn/theme-provider";
 import TrpcProvider from "~/app/_trpc/trpcProvider";
 import ReduxProvider from "~/app/_store/reduxProvider";
 import { AuthProvider } from "./_nextauth/nextAuthProvider";
+import Head from "next/head";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -19,7 +20,7 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Demon Lord Companion 👹",
+  title: "Demon Lord Companion",
   description: "Various tools for running a Shadow of the Demon Lord session.",
 };
 
