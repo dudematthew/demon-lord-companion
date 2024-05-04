@@ -5,6 +5,7 @@ import { Inter as FontSans } from "next/font/google";
 import { ThemeProvider } from "~/components/theme-provider";
 import TrpcProvider from "~/app/_trpc/trpcProvider";
 import ReduxProvider from "~/app/_store/reduxProvider";
+import { AuthProvider } from "./_nextauth/nextAuthProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -18,26 +19,28 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "HipsterTools 🍈",
-  description: "Narzędzia dla graczy od Mistrza Gry.",
+  title: "Demon Lord Companion 👹",
+  description: "Various tools for running a Shadow of the Demon Lord session.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children, session }: { children: React.ReactNode, session: any }) {
   return (
     <html lang="pl" suppressHydrationWarning>
       <body className={fontSans.className}>
-        <ReduxProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <TrpcProvider>
-              {children}
-            </TrpcProvider>
-          </ThemeProvider>
-        </ReduxProvider>
+          <AuthProvider session={session}>
+          <ReduxProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <TrpcProvider>
+                {children}
+              </TrpcProvider>
+            </ThemeProvider>
+          </ReduxProvider>
+        </AuthProvider>
       </body>
     </html>
   );

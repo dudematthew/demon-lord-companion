@@ -1,16 +1,21 @@
+
 import ClientComponent from "~/components/ClientComponent";
 import ServerComponent from "~/components/ServerComponent";
 import { ModeToggle } from "~/components/ui/mode-toggle";
-import { SessionProvider } from "next-auth/react";
 import { Button } from "~/components/ui/button";
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { getServerSession } from "next-auth";
+import { auth, authOptions } from "./api/auth/[...nextauth]/route";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
   return (
     <main className="flex flex-col items-center justify-center w-full h-screen gap-y-5">
-      <h1 className="font-bold text-xl">Welcome motherfucker.</h1>
-      <ClientComponent />
+      {/* <h1 className="font-bold text-xl">Welcome {session?.user?.name ?? 'Guest'}.</h1> */}
+      <code>{JSON.stringify(session)}</code>
+      <ClientComponent/>
       <ServerComponent />
-      <ModeToggle></ModeToggle>
+      <ModeToggle />
     </main>
   );
 }
