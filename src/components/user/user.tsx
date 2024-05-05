@@ -33,8 +33,8 @@ export default function User ({ isCollapsed }: { isCollapsed: boolean }) {
                     )}
                 </>
             ) || status === 'unauthenticated' && (
-                <Button variant="secondary" onClick={() => signIn('google')} className="w-full">
-                    Login with Google <CircleUser className="ml-2"></CircleUser>
+                <Button variant="secondary" onClick={() => signIn('google')} className="w-full flex gap-2">
+                    {isCollapsed ? "" : "Login with Google "} <CircleUser></CircleUser>
                 </Button>
             )}
 
