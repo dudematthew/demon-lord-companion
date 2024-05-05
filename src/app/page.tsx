@@ -1,4 +1,6 @@
 
+"use client";
+
 import ClientComponent from "~/components/ClientComponent";
 import ServerComponent from "~/components/ServerComponent";
 import { ModeToggle } from "~/components/ui/mode-toggle";
@@ -10,6 +12,7 @@ import { ResizablePanel, ResizablePanelGroup, ResizableHandle } from "~/componen
 import Navbar from "~/components/navbar";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "~/components/ui/dialog";
 import Calculators from "~/components/calculators/calculators";
+import { useState } from "react";
 
 // export default async function Home() {
 //   const session = await getServerSession(authOptions);
@@ -24,7 +27,14 @@ import Calculators from "~/components/calculators/calculators";
 //   );
 // }
 
-export default async function Home() {
+export default function Index() {
+
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const togglePanel = (collapsed: boolean) => {
+    setIsCollapsed(collapsed);
+  };
+
   return (
     <>
     <ResizablePanelGroup
@@ -32,8 +42,8 @@ export default async function Home() {
       className="h-screen max-h-screen w-screen max-w-screen"
     >
 
-      <ResizablePanel defaultSize={15} minSize={8} className="h-screen max-w-full overflow-y-auto">
-        <Navbar></Navbar>
+      <ResizablePanel defaultSize={12} minSize={10} maxSize={12} collapsedSize={4} onExpand={() => togglePanel(false)} onCollapse={() => togglePanel(true)} collapsible className="h-screen overflow-y-auto">
+        <Navbar isCollapsed={isCollapsed}></Navbar>
       </ResizablePanel>
 
       <ResizableHandle withHandle />

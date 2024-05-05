@@ -1,4 +1,4 @@
-import { serverClient } from "~/app/_trpc/serverClient";
+import { serverClient } from "~/app/_lib/_trpc/serverClient";
 
 export default async function ServerComponent() {
   const getHello = await serverClient.getHello();

@@ -2,11 +2,10 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { Inter as FontSans } from "next/font/google";
-import { ThemeProvider } from "~/app/_shadcn/theme-provider";
-import TrpcProvider from "~/app/_trpc/trpcProvider";
-import ReduxProvider from "~/app/_store/reduxProvider";
-import { AuthProvider } from "./_nextauth/nextAuthProvider";
-import Head from "next/head";
+import { ThemeProvider } from "~/app/_lib/_shadcn/theme-provider";
+import TrpcProvider from "~/app/_lib/_trpc/trpcProvider";
+import StoreProvider from "~/app/_store/storeProvider";
+import { AuthProvider } from "./_lib/_nextauth/nextAuthProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -29,7 +28,7 @@ export default function RootLayout({ children, session }: { children: React.Reac
     <html lang="pl" suppressHydrationWarning>
       <body className={fontSans.className}>
           <AuthProvider session={session}>
-          <ReduxProvider>
+          <StoreProvider>
             <ThemeProvider
               attribute="class"
               defaultTheme="system"
@@ -40,7 +39,7 @@ export default function RootLayout({ children, session }: { children: React.Reac
                 {children}
               </TrpcProvider>
             </ThemeProvider>
-          </ReduxProvider>
+          </StoreProvider>
         </AuthProvider>
       </body>
     </html>

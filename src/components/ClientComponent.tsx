@@ -1,6 +1,6 @@
 "use client";
 
-import { trpc } from "~/app/_trpc/client";
+import { trpc } from "~/app/_lib/_trpc/client";
 import { Button } from "./ui/button";
 import { signIn, signOut, useSession } from "next-auth/react";
 

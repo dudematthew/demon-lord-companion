@@ -8,9 +8,11 @@ import { useState, useEffect } from 'react';
 import { stat } from "fs";
 import { Skeleton } from "../ui/skeleton";
 
-export default function User () {
+export default function User ({ isCollapsed }: { isCollapsed: boolean }) {
     const { data: session, status } = useSession();
-    const initials = session?.user?.name?.split(' ').map((name: string) => name[0]).join('') ?? '';
+    const nameChunks = session?.user?.name?.split(' ') ?? [];
+    const initials = nameChunks.map((name: string) => name[0]).join('') ?? '';
+    const name = nameChunks[0] ?? null;
 
     return (
         <div className="flex gap-3 w-full items-center my-1">
@@ -26,7 +28,9 @@ export default function User () {
                         <AvatarImage src={session?.user?.image ?? ''} />
                         <AvatarFallback>{initials}</AvatarFallback>
                     </Avatar>
-                    <span className="font-semibold text-ellipsis">{session?.user?.name ?? ''}</span>
+                    {isCollapsed || (
+                        <span className="font-semibold text-ellipsis">{name ?? ''}</span>
+                    )}
                 </>
             ) || status === 'unauthenticated' && (
                 <Button variant="secondary" onClick={() => signIn('google')} className="w-full">

@@ -19,157 +19,63 @@ import {
     CardTitle,
   } from "~/components/ui/card";
 
-  import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-  } from "~/components/ui/table";
+import { ScrollArea } from "~/components/ui/scroll-area";
 
+import CalculatorTab from "./calculatorTab";
+import Fight from "./fight/fight";
+import { Dices } from "lucide-react";
+import Misc from "./misc/misc";
+import { useState } from "react";
 
 export default function Calculators () {
 
+    const [snap, setSnap] = useState<number | string | null>(1);
+
     return (
-        <Drawer>
+        <Drawer
+            snapPoints={[0.5, 1]}
+            activeSnapPoint={snap}
+            setActiveSnapPoint={setSnap}
+        >
             <DrawerTrigger>Open</DrawerTrigger>
-            <DrawerContent className="h-[90%]">
+            <DrawerContent data-vaul-no-drag className="h-[96vh]">
 
                 <DrawerHeader>
-                    <DrawerTitle>Other tools and random tables</DrawerTitle>
-                    <DrawerDescription>Above initiative tracker, you can find other tools and random tables that can help you during your game.</DrawerDescription>
+                    <DrawerTitle className="flex gap-3 items-center">Other tools and random tables <Dices></Dices></DrawerTitle>
+                    <DrawerDescription>Apart from initiative tracker, you can find other tools and random tables that can help you during your game.</DrawerDescription>
                 </DrawerHeader>
               
-                <Tabs defaultValue="account" className="w-full my-2">
+                <Tabs defaultValue="fights" className="h-full w-full my-2">
+                    <>
                     <TabsList className="w-full">
-                        <TabsTrigger value="account">Fight</TabsTrigger>
+                        <TabsTrigger value="fights">Fight</TabsTrigger>
                         <TabsTrigger value="adventure">Adventure</TabsTrigger>
                         <TabsTrigger value="misc">Misc</TabsTrigger>
                     </TabsList>
-                    <TabsContent value="account" className="flex gap-3">
-                        <Card className="w-1/4">
-                            <CardHeader>
-                                <CardTitle>Hit Location</CardTitle>
-                                <CardDescription>Where does it hurt?</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                            <Table>
-                                <TableCaption>Yes, I know there isn't any in SotDL.</TableCaption>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead className="w-[100px]">d6</TableHead>
-                                        <TableHead>Location</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    <TableRow>
-                                        <TableCell className="font-medium">1</TableCell>
-                                        <TableCell>Head</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell className="font-medium">2</TableCell>
-                                        <TableCell>Chest</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell className="font-medium">3</TableCell>
-                                        <TableCell>Right Hand</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell className="font-medium">4</TableCell>
-                                        <TableCell>Left Hand</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell className="font-medium">5</TableCell>
-                                        <TableCell>Left Leg</TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell className="font-medium">6</TableCell>
-                                        <TableCell>Right Leg</TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
-                            </CardContent>
-                            <CardFooter className="text-xs mt-2">
-                                <p>Data from main rulebook page 167.</p>
-                            </CardFooter>
-                        </Card>
-                        <Card className="w-1/4">
-                            <CardHeader>
-                                <CardTitle>Wound Type</CardTitle>
-                                <CardDescription>Where does it hurt?</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <Table>
-                                    <TableCaption>Fuck off.</TableCaption>
-                                    <TableHeader>
-                                        <TableRow>
-                                            <TableHead className="w-[100px]">d6</TableHead>
-                                            <TableHead>Wound</TableHead>
-                                        </TableRow>
-                                    </TableHeader>
-                                    <TableBody>
-                                        <TableRow>
-                                            <TableCell className="font-medium">1</TableCell>
-                                            <TableCell>Light</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell className="font-medium">2</TableCell>
-                                            <TableCell>Normal</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell className="font-medium">3</TableCell>
-                                            <TableCell>Minor</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell className="font-medium">4</TableCell>
-                                            <TableCell>Great</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell className="font-medium">5</TableCell>
-                                            <TableCell>Super</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell className="font-medium">6</TableCell>
-                                            <TableCell>Fucking Brutal</TableCell>
-                                        </TableRow>
-                                    </TableBody>
-                                </Table>
-                            </CardContent>
-                            <CardFooter className="text-xs mt-2">
-                                <p>Data from main rulebook page 121.</p>
-                            </CardFooter>
-                        </Card>
-                    </TabsContent>
-                    <TabsContent value="adventure">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Card Title</CardTitle>
-                                <CardDescription>Card Description</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <p>Card Content</p>
-                            </CardContent>
-                            <CardFooter>
-                                <p>Card Footer</p>
-                            </CardFooter>
-                        </Card>
-                    </TabsContent>
-                    <TabsContent value="misc">
-                        <Card>
-                            <CardHeader>
-                                <CardTitle>Card Title</CardTitle>
-                                <CardDescription>Card Description</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <p>Card Content</p>
-                            </CardContent>
-                            <CardFooter>
-                                <p>Card Footer</p>
-                            </CardFooter>
-                        </Card>
-                    </TabsContent>
+                    <ScrollArea className="h-full overflow-auto w-full">
+
+
+                        <TabsContent value="fights">
+                            <CalculatorTab>
+                                <Fight></Fight>
+                            </CalculatorTab>
+                        </TabsContent>
+
+                        <TabsContent value="adventure">
+                            <Card>
+                                <CalculatorTab>
+                                    <Misc></Misc>
+                                </CalculatorTab>
+                            </Card>
+                        </TabsContent>
+
+                        <TabsContent value="misc">
+                            <CalculatorTab>
+                                <Misc></Misc>
+                            </CalculatorTab>
+                        </TabsContent>
+                    </ScrollArea>
+                    </>
                 </Tabs>
 
                 {/* <DrawerFooter>
