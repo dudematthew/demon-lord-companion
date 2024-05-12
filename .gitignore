@@ -2,6 +2,7 @@
 
 # vscode
 .vscode
+.trunk
 
 # dependencies
 /node_modules

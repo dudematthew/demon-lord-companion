@@ -23,25 +23,29 @@ export const metadata: Metadata = {
   description: "Various tools for running a Shadow of the Demon Lord session.",
 };
 
-export default function RootLayout({ children, session }: { children: React.ReactNode, session: any }) {
+export default function RootLayout({
+  children,
+  session,
+}: {
+  children: React.ReactNode;
+  session: any;
+}) {
   return (
-    <html lang="pl" suppressHydrationWarning>
-      <body className={fontSans.className}>
-          <AuthProvider session={session}>
-          <StoreProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <TrpcProvider>
-                {children}
-              </TrpcProvider>
-            </ThemeProvider>
-          </StoreProvider>
-        </AuthProvider>
-      </body>
-    </html>
+	<html lang="pl" suppressHydrationWarning>
+	  <body className={fontSans.className}>
+		<AuthProvider session={session}>
+		  <StoreProvider>
+			<ThemeProvider
+			  attribute="class"
+			  defaultTheme="system"
+			  enableSystem
+			  disableTransitionOnChange
+			>
+			  <TrpcProvider>{children}</TrpcProvider>
+			</ThemeProvider>
+		  </StoreProvider>
+		</AuthProvider>
+	  </body>
+	</html>
   );
 }
