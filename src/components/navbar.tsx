@@ -35,7 +35,7 @@ export default function Navbar({ isCollapsed }: { isCollapsed: boolean }) {
 	return (
 		<>
 			<div
-				className={`flex flex-col gap-2 h-full py-3 px-1 justify-between text-sm`}
+				className={`flex flex-col gap-2 h-full py-3 pl-1 pr-2 justify-between text-sm`}
 			>
 				<div
 					className={`flex flex-col gap-1 ${isCollapsed ? 'items-center' : ''}`}
