@@ -25,26 +25,35 @@ export default function User({ isCollapsed }: { isCollapsed: boolean }) {
 				</div>
 			)) ||
 				(status === 'authenticated' && (
-					<>
+					<div
+						className={`flex items-center w-full gap-3 ${isCollapsed ? 'justify-center' : ''}`}
+					>
 						<Avatar>
 							<AvatarImage src={session?.user?.image ?? ''} />
 							<AvatarFallback>{initials}</AvatarFallback>
 						</Avatar>
 						{isCollapsed || (
-							<span className='font-semibold text-ellipsis'>
+							<span className='font-semibold overflow-hidden text-ellipsis'>
 								{name ?? ''}
 							</span>
 						)}
-					</>
+					</div>
 				)) ||
 				(status === 'unauthenticated' && (
 					<Button
 						variant='secondary'
 						onClick={() => signIn('google')}
-						className='w-full flex gap-2'
+						className='w-full flex px-3 items-center justify-center'
+						size='icon'
 					>
-						{isCollapsed ? '' : 'Login with Google '}{' '}
-						<CircleUser></CircleUser>
+						{isCollapsed ? null : (
+							<span className='font-semibold text-xs'>
+								Login with Google
+							</span>
+						)}
+						<span className='w-10 h-5'>
+							<CircleUser className='w-full h-full'></CircleUser>
+						</span>
 					</Button>
 				))}
 		</div>

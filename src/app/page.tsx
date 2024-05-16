@@ -53,7 +53,7 @@ export default function Index() {
 			>
 				<ResizablePanel
 					defaultSize={4}
-					minSize={10}
+					minSize={12}
 					maxSize={12}
 					collapsedSize={4}
 					onExpand={() => togglePanel(false)}
