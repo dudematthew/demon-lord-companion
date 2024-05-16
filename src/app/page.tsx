@@ -72,11 +72,11 @@ export default function Index() {
 					className='h-screen max-w-full overflow-y-auto'
 				>
 					<div className='flex flex-col gap-2 h-full items-center justify-center p-6'>
-						<span className='font-semibold'>Biblioteka</span>
+						<span className='font-semibold'>Library</span>
 						<span className='text-center'>
-							Tutaj znajdować się będzie biblioteka zasobów do
-							wybrania i edytowania. Zawierać będzie - NPC -
-							Potwory - Przedmioty - Encountery - Zaklęcia
+							This is where the resource library for selection and
+							editing will be located. It will include - NPCs -
+							Monsters - Items - Encounters - Spells
 						</span>
 					</div>
 				</ResizablePanel>
@@ -89,11 +89,11 @@ export default function Index() {
 					className='h-screen max-w-full overflow-y-auto'
 				>
 					<div className='flex flex-col gap-2 h-full items-center justify-center p-6'>
-						<span className='font-semibold'>Inicjatywa</span>
+						<span className='font-semibold'>Initiative</span>
 						<span className='text-center'>
-							Tutaj znajdować się będzie tracker inicjatywy. Wiele
-							różnych fajnych możliwości takich jak trackowanie
-							kolejki, stanów, punktów życia, itp.
+							This is where the initiative tracker will be
+							located. It will have many cool features such as
+							tracking queue, states, hit points, etc.
 						</span>
 					</div>
 				</ResizablePanel>
@@ -107,12 +107,12 @@ export default function Index() {
 				>
 					<div className='flex flex-col h-full items-center justify-center p-6'>
 						<span className='font-semibold'>
-							Informacje na temat bytu.
+							Information about the entity.
 						</span>
 						<span className='text-center'>
-							Tutaj znajdować się będą wszelkie przyciski
-							kontrolne dotyczące aktualnie wybranego bytu.
-							Poniżej pokazane będą dokładne statystyki i opis.
+							This is where all the control buttons related to the
+							currently selected entity will be located. Below
+							will be the detailed statistics and description.
 						</span>
 						<Calculators></Calculators>
 					</div>
