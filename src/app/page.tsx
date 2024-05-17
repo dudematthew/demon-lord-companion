@@ -24,6 +24,7 @@ import {
 import Calculators from '~/components/calculators/calculators';
 import { useState } from 'react';
 import { Settings } from 'lucide-react';
+import Library from '~/components/library/library';
 
 // export default async function Home() {
 //   const session = await getServerSession(authOptions);
@@ -68,17 +69,10 @@ export default function Index() {
 
 				<ResizablePanel
 					defaultSize={20}
-					minSize={15}
+					minSize={17}
 					className='h-screen max-w-full overflow-y-auto'
 				>
-					<div className='flex flex-col gap-2 h-full items-center justify-center p-6'>
-						<span className='font-semibold'>Library</span>
-						<span className='text-center'>
-							This is where the resource library for selection and
-							editing will be located. It will include - NPCs -
-							Monsters - Items - Encounters - Spells
-						</span>
-					</div>
+					<Library />
 				</ResizablePanel>
 
 				<ResizableHandle withHandle />
