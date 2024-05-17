@@ -23,7 +23,6 @@ import {
 } from '~/components/ui/dialog';
 import Calculators from '~/components/calculators/calculators';
 import { useState } from 'react';
-import { Settings } from 'lucide-react';
 import Library from '~/components/library/library';
 
 // export default async function Home() {
@@ -48,10 +47,7 @@ export default function Index() {
 
 	return (
 		<>
-			<ResizablePanelGroup
-				direction='horizontal'
-				className='h-screen max-h-screen w-screen max-w-screen'
-			>
+			<ResizablePanelGroup direction='horizontal' className='w-screen'>
 				<ResizablePanel
 					defaultSize={4}
 					minSize={12}
@@ -70,7 +66,7 @@ export default function Index() {
 				<ResizablePanel
 					defaultSize={20}
 					minSize={17}
-					className='h-screen max-w-full overflow-y-auto'
+					className='h-screen w-full'
 				>
 					<Library />
 				</ResizablePanel>
