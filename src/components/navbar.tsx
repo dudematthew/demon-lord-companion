@@ -62,10 +62,34 @@ export default function Navbar({ isCollapsed }: { isCollapsed: boolean }) {
 						<div
 							className={`flex gap-2 w-full items-center flex-wrap ${isCollapsed ? 'flex-col' : ''}`}
 						>
+							<NavbarButton
+								name='Start Encounter'
+								isCollapsed={isCollapsed}
+							>
+								<CirclePlay className='h-full w-full'></CirclePlay>
+							</NavbarButton>
+							<NavbarButton
+								name='Next Turn'
+								isCollapsed={isCollapsed}
+							>
+								<SkipForward className='h-full w-full' />
+							</NavbarButton>
+							<NavbarButton
+								name='Clean Encounter'
+								isCollapsed={isCollapsed}
+							>
+								<Eraser className='h-full w-full' />
+							</NavbarButton>
+							<NavbarButton
+								name='Save Encounter'
+								isCollapsed={isCollapsed}
+							>
+								<Save className='h-full w-full' />
+							</NavbarButton>
 							<Dialog>
 								<DialogTrigger className='w-full'>
 									<NavbarButton
-										name='Start Encounter'
+										name='Tools'
 										isCollapsed={isCollapsed}
 									>
 										<Hammer className='h-full w-full'></Hammer>
@@ -85,32 +109,6 @@ export default function Navbar({ isCollapsed }: { isCollapsed: boolean }) {
 									</DialogHeader>
 								</DialogContent>
 							</Dialog>
-							<TooltipProvider>
-								<NavbarButton
-									name='Start Encounter'
-									isCollapsed={isCollapsed}
-								>
-									<CirclePlay className='h-full w-full'></CirclePlay>
-								</NavbarButton>
-							</TooltipProvider>
-							<NavbarButton
-								name='Next Turn'
-								isCollapsed={isCollapsed}
-							>
-								<SkipForward className='h-full w-full' />
-							</NavbarButton>
-							<NavbarButton
-								name='Clean Encounter'
-								isCollapsed={isCollapsed}
-							>
-								<Eraser className='h-full w-full' />
-							</NavbarButton>
-							<NavbarButton
-								name='Save Encounter'
-								isCollapsed={isCollapsed}
-							>
-								<Save className='h-full w-full' />
-							</NavbarButton>
 							<Dialog>
 								<DialogTrigger className='w-full'>
 									<NavbarButton
@@ -201,7 +199,7 @@ export default function Navbar({ isCollapsed }: { isCollapsed: boolean }) {
 			return (
 				<TooltipProvider>
 					<Tooltip>
-						<TooltipTrigger>
+						<TooltipTrigger asChild>
 							<Button variant='outline' size='icon'>
 								<span className='h-5 w-5'>{children}</span>
 							</Button>
@@ -215,7 +213,7 @@ export default function Navbar({ isCollapsed }: { isCollapsed: boolean }) {
 		else
 			return (
 				<Button
-					variant='outline'
+					variant='ghost'
 					size='lg'
 					className='w-full text-xs px-2 flex gap-2 text-start justify-start'
 				>
